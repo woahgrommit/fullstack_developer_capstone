@@ -1,5 +1,8 @@
 # Uncomment the imports below before you add the function code
 # import requests
+import requests
+import json
+from django.http import JsonResponse
 import os
 from dotenv import load_dotenv
 
@@ -39,7 +42,14 @@ def analyze_review_sentiments(text):
         print("Network exception occurred")
         
 # Add code for retrieving sentiments
-
+def get_dealerships(request, state="All"):
+    if(state == "All"):
+        endpoint = "/fetchDealers"
+    else:
+        endpoint = "/fetchDealers/"+state
+    dealerships = get_request(endpoint)
+    return JsonResponse({"status":200,"dealers":dealerships})
+    
 def post_review(data_dict):
     request_url = backend_url+"/insert_review"
     try:

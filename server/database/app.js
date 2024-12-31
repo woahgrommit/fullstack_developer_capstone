@@ -1,11 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const fs = require('fs');
-const  cors = require('cors')
-const app = express()
+const  cors = require('cors');
+const app = express();
 const port = 3030;
 
-app.use(cors())
+app.use(cors());
 app.use(require('body-parser').urlencoded({ extended: false }));
 
 const reviews_data = JSON.parse(fs.readFileSync("reviews.json", 'utf8'));
@@ -71,8 +71,8 @@ app.get('/fetchDealers', async (req, res) => {
 app.get('/fetchDealers/:state', async (req, res) => {
 //Write your code here
   try {
-    const dealerships = await Dealerships.find({state: req.params.state});
-    res.json(dealerships);
+    const documents = await Dealerships.find({state: req.params.state});
+    res.json(documents);
   } catch (error) {
     res.status(500).json({ error: 'Error fetching dealerships' });
   }
@@ -82,11 +82,8 @@ app.get('/fetchDealers/:state', async (req, res) => {
 app.get('/fetchDealer/:id', async (req, res) => {
 //Write your code here
   try {
-    const dealership = await Dealerships.findOne({id: req.params.id});
-    if (!dealership) {
-      return res.status(404).json({ error: 'Error: Dealership not found' });
-    }
-    res.json(dealership);
+    const documents = await Dealerships.find({ id: req.params.id });
+    res.json(documents);
   } catch (error) {
     res.status(500).json({ error: 'Error fetching dealership' });
   }
