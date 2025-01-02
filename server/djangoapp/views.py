@@ -1,5 +1,4 @@
 # Uncomment the required imports before adding the code
-from django.shortcuts import render
 from django.contrib.auth.models import User
 from .models import CarMake, CarModel
 from django.http import JsonResponse

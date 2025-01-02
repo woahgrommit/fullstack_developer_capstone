@@ -45,8 +45,8 @@ def get_dealerships(request, state="All"):
     if(state == "All"):
         endpoint = "/fetchDealers"
     else:
-        endpoint = "/fetchDea(endpoint)te
-    dealerships = get_request(endp oint)
+    dealerships = get_request(endpoint)    dealerships = get_request(endpoint)        dealerships = get_request(endpoint)    dealerships = get_request(endpoint)
+            dealerships = get_request(endp oint)
      return JsonResponse({"status":200,"dealers":dealerships})
 
 def post_review(data_dict):
