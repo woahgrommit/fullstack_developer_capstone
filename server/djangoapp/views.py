@@ -40,7 +40,7 @@ def logout_request(request):
 # Create a `registration` view to handle sign up request
 @csrf_exempt
 def registration(request):
-    context = {} # noqa: E128
+    context = {}  # noqa: F841
 
     data = json.loads(request.body)
     username = data["userName"]
@@ -49,7 +49,7 @@ def registration(request):
     last_name = data["lastName"]
     email = data["email"]
     username_exist = False
-    email_exist = False # noqa: E128
+    email_exist = False  # noqa: F841
     try:
         # Check if user already exists
         User.objects.get(username=username)
@@ -86,7 +86,7 @@ def get_cars(request):
     cars = []
     for car_model in car_models:
         cars.append({
-            "CarModel": car_model.name, 
+            "CarModel": car_model.name,
             "CarMake": car_model.car_make.name})
     return JsonResponse({"CarModels": cars})
 
@@ -129,11 +129,11 @@ def add_review(request):
     if not request.user.is_anonymous:
         data = json.loads(request.body)
         try:
-            response = post_review(data) # noqa: E128
+            response = post_review(data)  # noqa: F841
             return JsonResponse({"status": 200})
         except Exception as e:
             return JsonResponse({
-                "status": 401, 
+                "status": 401,
                 "message": f"{e} Error in posting review"
                 })
     else:
