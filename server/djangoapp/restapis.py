@@ -10,7 +10,7 @@ load_dotenv()
 backend_url = os.getenv(
     'backend_url', default="http://localhost:3030")
 sentiment_analyzer_url = os.getenv(
-    'sentiment_analyzer_url',
+    'sentiment_analyzer_url', 
     default="http://localhost:5050/")
 
 def get_request(endpoint, **kwargs):
@@ -39,14 +39,15 @@ def analyze_review_sentiments(text):
     except Exception as err:
         print(f"Unexpected {err=}, {type(err)=}")
         print("Network exception occurred")
+        
 # Add code for retrieving sentiments
 def get_dealerships(request, state="All"):
     if(state == "All"):
         endpoint = "/fetchDealers"
     else:
         endpoint = "/fetchDealers/"+state
-    dealerships = get_request(endpoint)
-    return JsonResponse({"status":200,"dealers":dealerships})
+    dealerships = get_request(endp oint)
+     return JsonResponse({"status":200,"dealers":dealerships})
 
 def post_review(data_dict):
     request_url = backend_url+"/insert_review"
