@@ -40,6 +40,7 @@ def login_user(request):
     return JsonResponse(data)
 
 # Create a `logout_request` view to handle sign out request
+@csrf_exempt
 def logout_request(request):
     logout(request)
     data = {"userName":""}
