@@ -16,14 +16,9 @@ from django.views.decorators.csrf import csrf_exempt
 from .populate import initiate
 from .restapis import get_request, analyze_review_sentiments, post_review
 
-
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
-
-# Create your views here.
-
-# Create a `login_request` view to handle sign in request
 # @csrf_exempt
 def login_user(request):
     # Get username and password from request.POST dictionary
@@ -89,10 +84,7 @@ def get_cars(request):
     for car_model in car_models:
         cars.append({"CarModel": car_model.name, "CarMake": car_model.car_make.name})
     return JsonResponse({"CarModels":cars})
-    
-# # Update the `get_dealerships` view to render the index page with
-# a list of dealerships
-#Update the `get_dealerships` render list of dealerships all by default, particular state if state is passed
+
 def get_dealerships(request, state="All"):
     if(state == "All"):
         endpoint = "/fetchDealers"
